@@ -2,11 +2,9 @@ const ytdl = require('ytdl-core'),
     search = require('yt-search'),
     Discord = require('discord.js');
 
-exports.run = (client, message, args) => {
-
-    console.log(message.guild);
-    if (!message.member.voiceChannel) return message.reply('Entre em um canal de voz.');
-    if (message.guild.me.voiceChannel) return message.reply('Já estou sendo utilizado');
+exports.run = async (client, message, args) => {
+    if (!message.member.voice.channel) return message.reply('Entre em um canal de voz.');
+    if (message.guild.me.voice.channel) return message.reply('Já estou sendo utilizado');
 
     let pesquisa = args.join(' ');
 
@@ -17,18 +15,19 @@ exports.run = (client, message, args) => {
 
         const video = response.videos[0];
 
-        const con = await message.member.voiceChannel.join();
-        const tocar = await con.playStream(ytdl(video.url, { filter: 'audioonly' }));
+        const con = await message.member.voice.channel.join();
+        const tocar = await con.play(ytdl(video.url));
 
         tocar.on('end', () => {
             message.channel.send('A música acabou, flw abraço!');
-            message.member.voiceChannel.leave();
+            message.member.voice.channel.leave();
         });
 
-        const embed = Discord.MessageEmbed()
+        console.log(video.url);
+        const embed = new Discord.MessageEmbed()
         .setAuthor(message.author.tag, message.author.avatarURL)
         .setTitle(`Tocando agora: ${video.title}`)
-        .setURL(`https://www.youtube.com${video.url}`)
+        .setURL(video.url)
         .setDescription(`Duração: ${video.duration.timestamp}`)
         .setColor('#0099ff');
 

@@ -7,6 +7,17 @@ client
 .on('message', message => {
     if (message.author.bot) return;
     if (message.channel.type == 'dm') return;
+
+    // if (message.content.toLowerCase().includes('hoje tem gol do ribamar')) {
+    //     return message.channel.send('!play hoje tem gol do ribamar');
+    // }
+
+    if (message.content.toLowerCase().includes('boa mito')) {
+        let boaMito = new Discord.MessageEmbed()
+        .setImage('https://media1.giphy.com/media/26gsspfbt1HfVQ9va/giphy.gif');
+
+        return message.channel.send(boaMito);
+    }
     if (!message.content.toLowerCase().startsWith(process.env.prefix)) return;
 
     let comando = message.content.toLowerCase().split(' ')[1];
