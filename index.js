@@ -1,7 +1,12 @@
 require('dotenv').config();
 
-const Discord = require('discord.js'),
+const express = require('express')()
+    Discord = require('discord.js'),
     client = new Discord.Client();
+
+express.get('/', (request, response) => response.status(200).json({bot: 'online'}));
+express.listen(process.env.port, () => console.log(`Servidor rodando na porta: ${process.env.port}`));
+
 
 client
 .on('message', message => {

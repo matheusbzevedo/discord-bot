@@ -23,7 +23,6 @@ exports.run = async (client, message, args) => {
             message.member.voice.channel.leave();
         });
 
-        console.log(video.url);
         const embed = new Discord.MessageEmbed()
         .setAuthor(message.author.tag, message.author.avatarURL)
         .setTitle(`Tocando agora: ${video.title}`)
