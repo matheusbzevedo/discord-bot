@@ -17,7 +17,7 @@
     "ytdl-core": "^2.0.1"
   },
   "scripts": {
-    "start": "cross-env port=3000 prefix=!tp discord_token=NjkxNDQxNzE2MTEyMjYxMTcy.XnlFcg.h4ipVFQ2mJ3ke5s1O9r_oNggPGI node index.js",
+    "start": "node index.js",
     "dev": "nodemon index.js"
   },
   "devDependencies": {
