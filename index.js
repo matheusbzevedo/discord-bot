@@ -7,7 +7,7 @@ const express = require('express')(),
 
 express.use(cors());
 express.get('/', (request, response) => response.status(200).json({bot: 'online'}));
-express.listen(process.env.port, () => console.log(`Servidor rodando na porta: ${process.env.port}`));
+express.listen(process.env.PORT || 3000, () => console.log(`Servidor rodando na porta: ${process.env.port}`));
 
 
 client
