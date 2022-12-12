@@ -10,7 +10,7 @@
     "cross-env": "^7.0.2",
     "discord.js": "^12.0.2",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "ffmpeg-binaries": "3.2.2-3",
     "node-opus": "^0.3.3",
     "yt-search": "^1.1.2",
